@@ -64,6 +64,18 @@ public class WebcamCanvas extends JPanel implements MouseInputListener, KeyListe
 		}
 		lastDrawn = cam.getImage();
 
+		if(lastDrawn == null)
+		{
+			return;
+		}
+
+		Dimension lastOutSize = cam.getViewSize();
+		for(ProcessStep step : steps)
+		{
+			step.updateOutputDim(lastOutSize);
+			lastOutSize = step.getOutputDim();
+		}
+
 		if(steps.size() > 0)
 		{
 			Dimension last = steps.get(steps.size()-1).getOutputDim();

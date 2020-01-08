@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 class ExampleProcessStep extends ProcessStep {
 
     public ExampleProcessStep(Dimension inputDim) {
-        super(inputDim);
     }
 
     @Override
@@ -18,7 +17,7 @@ class ExampleProcessStep extends ProcessStep {
     }
 
     @Override
-    public void init(Dimension d)
+    public void updateOutputDim(Dimension d)
     {
         this.outputDim = new Dimension(d.width/2,d.height/2);
     }

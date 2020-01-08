@@ -9,11 +9,6 @@ abstract class ProcessStep
 
     protected abstract Image process(BufferedImage in);
 
-    public ProcessStep(Dimension inputDim)
-    {
-        init(inputDim);
-    }
-
     public BufferedImage doProcess(BufferedImage input)
     {
         prepBuf();
@@ -44,7 +39,7 @@ abstract class ProcessStep
         return outputDim;
     }
 
-    protected void init(Dimension inputDim)
+    protected void updateOutputDim(Dimension inputDim)
     {
         outputDim.setSize(inputDim);
     }
