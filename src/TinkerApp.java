@@ -25,13 +25,6 @@ public class TinkerApp extends JFrame{
 	{
 		setVisible(true);
 		setResizable(false);
-		try{
-			w.open(true);
-		}catch(WebcamLockException e)
-		{
-			JOptionPane.showMessageDialog(null, "Webcam already in use. Exiting.");
-			System.exit(0);
-		}
 		while(true)
 		{
 			wc.draw();
@@ -67,6 +60,14 @@ public class TinkerApp extends JFrame{
 
 		wc = new WebcamCanvas(w);
 
+		try{
+			w.open(true);
+		}catch(WebcamLockException e)
+		{
+			JOptionPane.showMessageDialog(null, "Webcam already in use. Exiting.");
+			System.exit(0);
+		}
+
 		add(wc,BorderLayout.CENTER);
 		add(right,BorderLayout.EAST);
 		pack();
@@ -88,5 +89,10 @@ public class TinkerApp extends JFrame{
 	public Dimension getInputDim()
 	{
 		return w.getViewSize();
+	}
+
+	public Webcam getWebcam()
+	{
+		return w;
 	}
 }

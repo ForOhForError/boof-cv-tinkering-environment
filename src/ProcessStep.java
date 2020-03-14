@@ -1,4 +1,7 @@
 import java.awt.image.BufferedImage;
+
+import java.awt.event.MouseEvent;
+
 import java.awt.Image;
 import java.awt.Dimension;
 
@@ -8,6 +11,8 @@ abstract class ProcessStep
     protected Dimension outputDim;
 
     protected abstract Image process(BufferedImage in);
+
+    protected abstract boolean handleClick(MouseEvent e);
 
     public BufferedImage doProcess(BufferedImage input)
     {
@@ -39,8 +44,8 @@ abstract class ProcessStep
         return outputDim;
     }
 
-    protected void updateOutputDim(Dimension inputDim)
+    public void updateOutputDim(Dimension d)
     {
-        outputDim.setSize(inputDim);
+        this.outputDim = new Dimension(d);
     }
 }

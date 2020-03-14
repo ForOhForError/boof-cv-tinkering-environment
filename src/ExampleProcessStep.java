@@ -9,17 +9,18 @@ class ExampleProcessStep extends ProcessStep {
 
     @Override
     protected Image process(BufferedImage in) {
-        return in.getScaledInstance(
-            outputDim.width,
-            outputDim.height,
-            BufferedImage.SCALE_FAST
-        );
+        return in.getScaledInstance(outputDim.width, outputDim.height, BufferedImage.SCALE_FAST);
     }
 
     @Override
-    public void updateOutputDim(Dimension d)
-    {
-        this.outputDim = new Dimension(d.width/2,d.height/2);
+    public void updateOutputDim(Dimension d) {
+        this.outputDim = new Dimension(d.width / 2, d.height / 2);
     }
+
+    @Override
+    protected boolean handleClick(java.awt.event.MouseEvent e) {
+        return false;
+    }
+
 
 }

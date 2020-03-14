@@ -114,6 +114,13 @@ public class WebcamCanvas extends JPanel implements MouseInputListener, KeyListe
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		for(ProcessStep step : steps)
+		{
+			if(step.handleClick(arg0))
+			{
+				break;
+			}
+		}
 	}
 
 	@Override
