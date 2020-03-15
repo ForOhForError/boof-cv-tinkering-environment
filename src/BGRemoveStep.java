@@ -17,7 +17,7 @@ class BGRemoveStep extends ProcessStep
 
     ImageType<GrayU8> imageType = ImageType.single(GrayU8.class);
     BackgroundModelStationary<GrayU8> background =
-		FactoryBackgroundModel.stationaryBasic(new ConfigBackgroundBasic(35, 0.01f), imageType);
+		FactoryBackgroundModel.stationaryBasic(new ConfigBackgroundBasic(60, 0.01f), imageType);
     private Webcam w;
 
     public BGRemoveStep(Webcam w)
@@ -30,9 +30,10 @@ class BGRemoveStep extends ProcessStep
         GrayU8 img = ConvertBufferedImage.convertFromSingle(in, null, GrayU8.class);
         GrayU8 binary = img.createSameShape();
         background.segment(img, binary);
-        binary=BinaryImageOps.dilate8(binary, 5, null);
+        binary=BinaryImageOps.dilate8(binary, 30, null);
+        binary=BinaryImageOps.erode8(binary, 15, null);
         img=mask(img,binary,null);
-        return ConvertBufferedImage.convertTo(amp(binary,null), in);
+        return ConvertBufferedImage.convertTo(img, in);
     }
 
     public GrayU8 mask(GrayU8 source, GrayU8 mask, GrayU8 output)

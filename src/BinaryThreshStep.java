@@ -28,8 +28,10 @@ class BinaryThreshStep extends ProcessStep
 		int colorInternal = 0xFF2020;
 
         List<Contour> contours = BinaryImageOps.contour(filtered, ConnectRule.EIGHT, label);
-        BufferedImage vis = VisualizeBinaryData.renderContours(contours, colorExternal, colorInternal,img.width, img.height, null);
-        return vis;
+        //BufferedImage vis = 
+            VisualizeBinaryData.renderContours(contours, colorExternal, colorInternal,img.width, img.height, null);
+        BufferedImage amp = VisualizeBinaryData.renderBinary(filtered, false, null);
+        return amp;
     }
 
     @Override

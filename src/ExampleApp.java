@@ -12,7 +12,8 @@ class ExampleApp
         BGRemoveStep bg = new BGRemoveStep(app.getWebcam());
         bg.adaptBackground();
         app.addStep(bg);
-        //app.addStep(new BinaryThreshStep());
+        app.addStep(new BinaryThreshStep());
+        app.addStep(new ContourBoxStep());
 		app.run();
 	}
 }
